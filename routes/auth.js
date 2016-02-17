@@ -8,7 +8,7 @@ exports.register = function (server, options, next) {
       handler: function (request, reply) {
         Authenticated(request, function (result) {
           if (result.authenticated) {
-            reply.redirect('/myCollection');
+            reply.redirect('/myCollection'); // CHANGE-ME
           } else {
             reply.view('auth/signup');
           }
@@ -21,7 +21,7 @@ exports.register = function (server, options, next) {
       handler: function (request, reply) {
         Authenticated(request, function (result) {
           if (result.authenticated) {
-            reply.redirect('/myCollection');
+            reply.redirect('/myCollection'); // CHANGE-ME
           } else {
             reply.view('auth/signin', {message: request.query.message});
           }
