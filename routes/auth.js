@@ -10,7 +10,7 @@ exports.register = function (server, options, next) {
           if (result.authenticated) {
             reply.redirect('/myCollection'); // CHANGE-ME
           } else {
-            reply.view('auth/signup');
+            reply.view('auth/signup', {message: request.query.message});
           }
         });
       }
