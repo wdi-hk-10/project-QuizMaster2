@@ -12,6 +12,7 @@ server.connection({
 var plugins = [
   { register: require('vision')}, // views
   { register: require('inert')}, // public files hosting
+  { register: require('./routes/static_pages.js')},
   { register: require('hapi-mongodb'), // setup the mongo connect
     options: {
       "url": process.env.MONGOLAB_URI || "mongodb://127.0.0.1:27017/hapi-doughnuts",
