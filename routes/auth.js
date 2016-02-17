@@ -7,6 +7,7 @@ exports.register = function (server, options, next) {
       path: '/signup',
       handler: function (request, reply) {
         Authenticated(request, function (result) {
+          // if already signed in, redirect to your main collection page
           if (result.authenticated) {
             reply.redirect('/myCollection'); // CHANGE-ME
           } else {
@@ -20,6 +21,7 @@ exports.register = function (server, options, next) {
       path: '/signin',
       handler: function (request, reply) {
         Authenticated(request, function (result) {
+          // if already signed in, redirect to your main collection page
           if (result.authenticated) {
             reply.redirect('/myCollection'); // CHANGE-ME
           } else {
