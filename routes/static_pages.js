@@ -1,3 +1,5 @@
+var Authenticated = require("./modules/Authenticated.js");
+
 exports.register = function (server, options, next) {
   server.route([
     { // serving static files
@@ -13,7 +15,9 @@ exports.register = function (server, options, next) {
       method: 'GET',
       path: '/',
       handler: function(request, reply) {
-        reply.view('static_pages/home').code(200);
+        Authenticated(request, function (result) {
+          reply.view('static_pages/home', result).code(200);
+        });
       }
     }
   ]);

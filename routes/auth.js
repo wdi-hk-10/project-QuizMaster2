@@ -1,17 +1,31 @@
+var Authenticated = require("./modules/Authenticated.js");
+
 exports.register = function (server, options, next) {
   server.route([
     {
       method: 'GET',
       path: '/signup',
       handler: function (request, reply) {
-        reply.view('auth/signup');
+        Authenticated(request, function (result) {
+          if (result.authenticated) {
+            reply.redirect('/myCollection');
+          } else {
+            reply.view('auth/signup');
+          }
+        });
       }
     },
     {
       method: 'GET',
       path: '/signin',
       handler: function (request, reply) {
-        reply.view('auth/signin');
+        Authenticated(request, function (result) {
+          if (result.authenticated) {
+            reply.redirect('/myCollection');
+          } else {
+            reply.view('auth/signin', {message: request.query.message});
+          }
+        });
       }
     }
   ]);

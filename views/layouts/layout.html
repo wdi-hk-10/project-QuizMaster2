@@ -12,7 +12,12 @@
   <link rel="stylesheet" href="/public/css/layouts/layout.css">
 </head>
 <body>
-  <h1>Hapi Template</h1>
+  {{#if authenticated}}
+    <button id="signout-btn" class="btn btn-default">Sign Out</button>
+  {{else}}
+    <a href="/signup" class="btn btn-default">Sign Up</a>
+    <a href="/signin" class="btn btn-default">Sign In</a>
+  {{/if}}
 
   {{{content}}}
 </body>
