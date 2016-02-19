@@ -14,7 +14,21 @@ exports.register = function (server, options, next) {
           }
         });
       }
+    },
+    {
+      method: "GET",
+      path: '/quiz_take',
+      handler: function (request, reply) {
+        Authenticated(request, function(result){
+          if (result.authenticated) {
+            reply.view('quizzes/quiz_take.html', result);
+          } else {
+            reply.redirect('/signin');
+          }
+        });
+      }
     }
+
   ]);
 
   next();

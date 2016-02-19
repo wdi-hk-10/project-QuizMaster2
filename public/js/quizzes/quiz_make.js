@@ -11,8 +11,10 @@ $(document).ready (function() {
 
     console.log(newAsk, newAnswer, newDummy1, newDummy2, newUrl);
 
-    if (newQuestion == '' || newAnswer == '' || newDummy1 == '' || newDummy2 == '')
+    if (newQuestion == '' || newAnswer == '' || newDummy1 == '' || newDummy2 == '') {
       alert('All fields except "url" must be populated to have valid question.');
+      return;
+    }
 
 
     var newQuestion = ''+
@@ -22,21 +24,26 @@ $(document).ready (function() {
         '<input name="dummy1" type="text" value="' + newDummy1 + '">' +
         '<input name="dummy2" type="text" value="' + newDummy2 + '">' +
         '<input name="url" type="text" value="' + newUrl + '">' +
-        '<button class="btn btn-danger">Delete</button>' +
+        '<button class="delete-btn btn btn-danger">Delete</button>' +
       '</li>';
 
     this.reset();
     $('#question-list').prepend(newQuestion);
-  }
 
-  $('button.delete').off().on('click', function () {
-    $(this).parent().remove();
-  });
+    $('.delete-btn').on('click', function () {
+      $(this).parent().remove();
+    });
+  }
 
   $('#question-form').on('submit', createQuestion);
 
-  function createQuiz () {
+  function createQuiz (e) {
+    e.preventDefault();
+
+    var newQuiz = $('input.quiz-name').val();
+    var newTopic = $('input.quiz-topic').val();
+    var questionSet = [];
 
   }
 
-})
+});
