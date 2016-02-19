@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="/public/js/quizzes/quiz_make.js"></script>
+
+    <link href="public/css/quizzes/quiz_make.css" rel="stylesheet">
+  </head>
+  <body>
+   <div class="container">
+    <div class="row col-xs-12">
+      <h1>
+        Quiz Maker
+      </h1>
+      </div>
+    </div>
+    <div id="question-list" class="container">
+      <div class="item row">
+        <div class="question col-xs-12">
+          <label>Question</label>
+          <input class="qestion" placeholder="Input question here">
+        </div>
+        <div class="answer col-xs-12">
+          <label>Answer</label>
+          <input class="answer" placeholder="Input answer here">
+        </div>
+          <div class="dummy1 col-xs-12">
+          <label>Dummy1</label>
+          <input class="dummy1" placeholder="Input 1st dummy answer here">
+        </div>
+        <div class="dummy2 col-xs-12">
+          <label>Dummy2</label>
+          <input class="quantity" placeholder="Input 2nd dummy answer here">
+        </div>
+        <div class="dummy2 col-xs-12">
+          <label>url</label>
+          <input class="quantity" placeholder="Input link to relevant media">
+          <button id="new-question-create">Create Another Question</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="quiz-details">
+      <label>Quiz Name</label>
+      <input class="quiz-name" placeholder="Input quiz name here">
+      <label>Quiz Topic</label>
+      <input class="quiz-topic" placeholder="Input quiz topic here">
+      <button id="create-quiz-button" type="button" class="btn btn-success">
+        Create Quiz
+      </button>
+    </div>
+  </body>
+</html>
