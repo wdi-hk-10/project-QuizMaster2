@@ -13,6 +13,7 @@ var plugins = [
   { register: require('vision')}, // views
   { register: require('inert')}, // public files hosting
   { register: require('./routes/static_pages.js')},
+  { register: require('./routes/quizzes.js')},
   { register: require('./routes/auth.js')},
   { register: require('./routes/api/auth.js')},
   { register: require('hapi-mongodb'), // setup the mongo connect
