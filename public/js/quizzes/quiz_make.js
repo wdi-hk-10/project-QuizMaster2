@@ -11,8 +11,8 @@ $(document).ready (function() {
 
     console.log(newAsk, newAnswer, newDummy1, newDummy2, newUrl);
 
-    if (newQuestion == '' || newAnswer == '' || newDummy1 == '' || newDummy2 == '') {
-      alert('All fields except "url" must be populated to have valid question.');
+    if (newAsk == '' || newAnswer == '' || newDummy1 == '' || newDummy2 == '') {
+      alert('All fields except "url" must be populated to make valid question.');
       return;
     }
 
@@ -40,10 +40,28 @@ $(document).ready (function() {
   function createQuiz (e) {
     e.preventDefault();
 
-    var newQuiz = $('input.quiz-name').val();
-    var newTopic = $('input.quiz-topic').val();
     var questionSet = [];
+    var newQuiz = {
+      'quizName':$('input.quiz-name').val(),
+      'quizTopic':$('input.quiz-topic').val(),
+      'questionSet':questionSet
+    };
+    var question = {};
 
+    $('#question-list li').each(function (index, li) {
+      //put each item into an object and append to questionSet array
+      question = {'question':($(li).find('input:eq(0)').val()),
+        'answer':($(li).find('input:eq(1)').val()),
+        'dummy1':($(li).find('input:eq(2)').val()),
+        'dummy2':($(li).find('input:eq(3)').val()),
+        'url':($(li).find('input:eq(4)').val())
+      }
+      questionSet.push(question);
+    });
+    console.log(newQuiz);
   }
+
+  $('#create-quiz').on('click', createQuiz);
+
 
 });
