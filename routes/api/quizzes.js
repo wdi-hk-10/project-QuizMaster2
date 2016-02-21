@@ -14,14 +14,14 @@ exports.register = function(server, options, next) {
               var db = request.server.plugins['hapi-mongodb'].db;
               var ObjectID = request.server.plugins['hapi-mongodb'].ObjectID;
               var newQuiz = request.payload;
-              var totalQuiz = {
+              var quizInfo = {
                 'user_id': ObjectID(result.user_id),
                 'name': newQuiz.quizName,
                 'topic': newQuiz.quizTopic,
                 'questionSet': newQuiz.questionSet
               };
 
-              db.collection('quizzes').insert(newQuiz, function(err, doc){
+              db.collection('quizzes').insert(quizInfo, function(err, doc){
                 if (err) { return reply('Internal MongoDB error', err).code(400); }
 
                 reply(doc).code(200);
