@@ -3,7 +3,11 @@ module.exports = function(request, callback) {
   var session = request.yar.get('hapi_qm2_session'); // CHANGE-ME
 
   if (!session) {
-    return callback({ "authenticated": false, "message": "Unauthorized" });
+    return callback({
+      "authenticated": false,
+      "user_id": null,
+      "message": "Unauthorized"
+    });
   }
 
   db.collection('sessions').findOne({ "session_id": session.session_id }, function(err, result) {
@@ -12,11 +16,13 @@ module.exports = function(request, callback) {
     if (result === null) {
       return callback({
         "authenticated": false,
+        "user_id": null,
         "message": "Unauthorized"
       });
     } else {
       return callback({
         "authenticated": true,
+        "user_id": session.user_id,
         "message": "Authorized"
       });
     }
