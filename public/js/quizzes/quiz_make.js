@@ -42,9 +42,9 @@ $(document).ready (function() {
 
     var questionSet = [];
     var newQuiz = {
-      'quizName':$('input.quiz-name').val(),
-      'quizTopic':$('input.quiz-topic').val(),
-      'questionSet':questionSet
+      quizName:$('input.quiz-name').val(),
+      quizTopic:$('input.quiz-topic').val(),
+      questionSet:questionSet
     };
     var question = {};
 
@@ -59,9 +59,21 @@ $(document).ready (function() {
       questionSet.push(question);
     });
     console.log(newQuiz);
+    $.ajax({
+        url: "http://0.0.0.0:8000/api/quizzes",
+        method: "POST",
+        data: newQuiz,
+        success: function (response, status) {
+          console.log(response);
+        },
+        error: function (response, status) {
+          console.log(response);
+        }
+      });
   }
 
   $('#create-quiz').on('click', createQuiz);
 
 
 });
+
