@@ -23,7 +23,7 @@ exports.register = function(server, options, next) {
 
               db.collection('quizzes').insert(quizInfo, function(err, doc){
                 if (err) { return reply('Internal MongoDB error', err).code(400); }
-
+                console.log(newQuiz.questionSet);
                 reply(doc).code(200);
               });
             } else {

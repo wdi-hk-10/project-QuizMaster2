@@ -9,8 +9,6 @@ $(document).ready (function() {
     var newDummy2 = $('input.dummy2').val();
     var newUrl = $('input.url').val();
 
-    console.log(newAsk, newAnswer, newDummy1, newDummy2, newUrl);
-
     if (newAsk == '' || newAnswer == '' || newDummy1 == '' || newDummy2 == '') {
       alert('All fields except "url" must be populated to make valid question.');
       return;
@@ -19,11 +17,12 @@ $(document).ready (function() {
 
     var newQuestion = ''+
       '<li>' +
-        '<input name="question" type="text" value="' + newAsk + '">' +
-        '<input name="answer" type="text" value="' + newAnswer + '">' +
-        '<input name="dummy1" type="text" value="' + newDummy1 + '">' +
-        '<input name="dummy2" type="text" value="' + newDummy2 + '">' +
-        '<input name="url" type="text" value="' + newUrl + '">' +
+        '<label>Question</label><input name="question" type="text" value="' + newAsk + '"></br>' +
+        '<label>Answer</label><input name="answer" type="text" value="' + newAnswer + '"></br>' +
+        '<label>Answer</label><input name="answer" type="text" value="' + newAnswer + '"></br>' +
+        '<label>Dummy1</label><input name="dummy1" type="text" value="' + newDummy1 + '"></br>' +
+        '<label>Dummy2</label><input name="dummy2" type="text" value="' + newDummy2 + '"></br>' +
+        '<label>Url</label><input name="url" type="text" value="' + newUrl + '">' +
         '<button class="delete-btn btn btn-danger">Delete</button>' +
       '</li>';
 
@@ -41,12 +40,15 @@ $(document).ready (function() {
     e.preventDefault();
 
     var questionSet = [];
-    var newQuiz = {
-      quizName:$('input.quiz-name').val(),
-      quizTopic:$('input.quiz-topic').val(),
-      questionSet:questionSet
-    };
+    var quizName = $('input.quiz-name').val();
+    var quizTopic = $('input.quiz-topic').val()
+    var newQuiz = {quizName, quizTopic, questionSet:questionSet};
     var question = {};
+
+    if (quizName == '' || quizTopic == '') {
+      alert('Quiz must have a name and topic to be valid.');
+      return;
+    }
 
     $('#question-list li').each(function (index, li) {
       //put each item into an object and append to questionSet array
@@ -58,7 +60,7 @@ $(document).ready (function() {
       }
       questionSet.push(question);
     });
-    console.log(newQuiz);
+
     $.ajax({
         url: "http://0.0.0.0:8000/api/quizzes",
         method: "POST",
