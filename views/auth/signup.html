@@ -1,7 +1,9 @@
-<div id="signup-page">
-  {{#if message}}
-    <h2>{{message}}</h2>
-  {{/if}}
+<div class='container' id="signup-page">
+    <h1>Quiz Master</h1>
+    <img src='/public/photos/qm2_logo.jpeg'>
+  <% if (message) { %>
+    <h2><%= message %></h2>
+  <% } %>
 
   <h2>Sign Up</h2>
 
@@ -9,12 +11,12 @@
     <input type="text" name="email" placeholder="email">
     <input type="text" name="username" placeholder="username">
     <input type="password" name="password" placeholder="password">
-    <input type="submit" name="Sign Up" class="btn btn-default">
+    <input type="submit" name="Sign Up" class="btn btn-success">
+    <a href="/" class="btn btn-info">Back</a>
   </form>
 
   <div id="signup-form-message"></div>
 
-  <a href="/" class="btn btn-default">Back</a>
 </div>
 
 <script src="/public/js/auth/signup.js"></script>

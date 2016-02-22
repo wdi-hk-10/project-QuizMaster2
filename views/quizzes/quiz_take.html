@@ -1,0 +1,48 @@
+<div class='container row col-md-12 col-sm-6'>
+  <div class='col-md-6 col-sm-6'>
+    <h1>Quiz Master</h1>
+    <img src='/public/photos/qm2_logo.jpeg'>
+  </div>
+    <div class="container">
+      <div class="row col-xs-12">
+        <h1>
+          Quiz Taker
+        </h1>
+      </div>
+    </div>
+  <div id="game" class="container">
+    <div id="category" class="row">
+      <h1 class="col-md-12">Category (and Level)</h1>
+    </div>
+    <div class="row">
+      <section class="ans-choices col-md-6">
+        <h3>Question</h3>
+        <p id="question"></p>
+        <h3>Choose Answer</h3>
+          <div class="list-group col-md-10">
+            <button type="button" id="pick1" class="list-group-item answers" name="choice1"></button>
+            <button type="button" id="pick2" class="list-group-item answers" name="choice2"></button>
+            <button type="button" id="pick3" class="list-group-item answers" name="choice3"></button>
+            <button type="button" id="skip" class="list-group-item" name="skip">Skip to Next Question</button>
+          </div>
+        <div class="row">
+          <div class= "timer col-md-5">
+            <label>Timer<span id="timeLeft"></span></label>
+          </div>
+          <div class="score col-md-5 col-md-offset-2">
+            <label>Correct Answers<span id="scoreTot"></span></label>
+          </div>
+      </section>
+      <section class="graphic col-md-5 col-md-offset-1">
+        <h3>Related Graphic</h3>
+        <!-- <img id="qpic" src="" class="img-responsive"> -->
+      </section>
+    </div>
+    <div class="row">
+      <input id="answer-button" type="submit" value="Submit Answer" class="col-md-12" disabled>
+    </div>
+  </div>
+</div>
+
+<script src="/public/js/quizzes/quiz_take.js"></script>
+<link rel="stylesheet" href="/public/css/quizzes/quiz_take.css">
