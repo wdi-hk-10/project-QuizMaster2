@@ -19,7 +19,6 @@ $(document).ready (function() {
       '<li>' +
         '<label>Question</label><input name="question" type="text" value="' + newAsk + '"></br>' +
         '<label>Answer</label><input name="answer" type="text" value="' + newAnswer + '"></br>' +
-        '<label>Answer</label><input name="answer" type="text" value="' + newAnswer + '"></br>' +
         '<label>Dummy1</label><input name="dummy1" type="text" value="' + newDummy1 + '"></br>' +
         '<label>Dummy2</label><input name="dummy2" type="text" value="' + newDummy2 + '"></br>' +
         '<label>Url</label><input name="url" type="text" value="' + newUrl + '">' +
@@ -41,9 +40,7 @@ $(document).ready (function() {
 
     var questionSet = [];
     var quizName = $('input.quiz-name').val();
-    var quizTopic = $('input.quiz-topic').val()
-    var newQuiz = {quizName, quizTopic, questionSet:questionSet};
-    var question = {};
+    var quizTopic = $('input.quiz-topic').val();
 
     if (quizName == '' || quizTopic == '') {
       alert('Quiz must have a name and topic to be valid.');
@@ -52,7 +49,8 @@ $(document).ready (function() {
 
     $('#question-list li').each(function (index, li) {
       //put each item into an object and append to questionSet array
-      question = {'question':($(li).find('input:eq(0)').val()),
+      var question = {
+        'question':($(li).find('input:eq(0)').val()),
         'answer':($(li).find('input:eq(1)').val()),
         'dummy1':($(li).find('input:eq(2)').val()),
         'dummy2':($(li).find('input:eq(3)').val()),
@@ -60,6 +58,14 @@ $(document).ready (function() {
       }
       questionSet.push(question);
     });
+
+    var newQuiz = {
+      quizName: quizName,
+      quizTopic: quizTopic,
+      questionSet:questionSet,
+      quizLength: questionSet.length
+    };
+    console.log(newQuiz);
 
     $.ajax({
         url: "http://0.0.0.0:8000/api/quizzes",
